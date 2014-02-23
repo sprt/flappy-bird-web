@@ -264,6 +264,8 @@ nomen: true, plusplus: true, eqeq: true, sub: true */
    */
   FlappyBird.prototype.initialize = function (width, height) {
     this.IS_IOS = !!navigator.userAgent.match(/iPhone OS/);
+    this.IS_CHROME = !!navigator.userAgent.match(/Chrome/);
+    this.SOUND_DISABLED = this.IS_IOS || this.IS_CHROME;
     this.setCanvasSize(width, height);
     this.loadAssets(this.onAssetsLoaded.bind(this));
   };
@@ -293,7 +295,7 @@ nomen: true, plusplus: true, eqeq: true, sub: true */
     this.assetManager.queueDownload("/static/images/sprite.png", "image");
     this.assetManager.queueDownload("/static/scripts/sprite.json", "json");
     
-    if (!this.IS_IOS) {
+    if (!this.SOUND_DISABLED) {
       var that = this;
       ["die", "hit", "point", "swooshing", "wing"].forEach(function (soundName) {
         that.assetManager.queueDownload(
@@ -576,7 +578,7 @@ nomen: true, plusplus: true, eqeq: true, sub: true */
   };
   
   FlappyBird.prototype.playSound = function (soundName) {
-    if (this.IS_IOS) {
+    if (this.SOUND_DISABLED) {
       // Disable sound on iOS for now because it causes a *massive* fps drop
       return;
     }
