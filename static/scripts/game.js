@@ -152,7 +152,7 @@ nomen: true, plusplus: true, eqeq: true, sub: true */
   
   AssetManager.prototype._onAssetLoad = function (path, asset) {
     this._cache[path] = asset;
-    this._loadedCount += 1;
+    this._loadedCount++;
     this.progress = this._loadedCount / this._queue.length;
     if (this.progress == 1 && this._callback) {
       this._callback(this);
