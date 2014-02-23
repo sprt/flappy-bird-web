@@ -168,16 +168,16 @@ nomen: true, plusplus: true, eqeq: true, sub: true */
       
       if (file.type == "image") {
         asset = new Image();
-        asset.src = file.path;
         asset.addEventListener("load", function () {
           that._onAssetLoad(file.path, asset);
         }, false);
+        asset.src = file.path;
       } else if (file.type == "audio") {
         asset = document.createElement("audio");
-        asset.src = file.path;
         asset.addEventListener("canplaythrough", function () {
           that._onAssetLoad(file.path, asset);
         }, false);
+        asset.src = file.path;
       } else { // "json" or "text"
         xhr = new XMLHttpRequest();
         xhr.open("GET", file.path, true);
