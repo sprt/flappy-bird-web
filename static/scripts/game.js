@@ -174,7 +174,8 @@ nomen: true, plusplus: true, eqeq: true, sub: true */
         asset.src = file.path;
       } else if (file.type == "audio") {
         asset = document.createElement("audio");
-        asset.addEventListener("canplaythrough", function () {
+        asset.preload = "auto";
+        asset.addEventListener("loadeddata", function () {
           that._onAssetLoad(file.path, asset);
         }, false);
         asset.src = file.path;
