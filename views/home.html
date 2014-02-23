@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<title>Flappy Bird Web</title>
+
+<meta name="viewport"
+  content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+<!-- iOS 7 iPhone (retina) -->
+<link href="/static/images/apple-touch-icon-120x120.png" sizes="120x120"
+  rel="apple-touch-icon">
+<!-- iOS 7 iPad (retina) -->
+<link href="/static/images/apple-touch-icon-152x152.png" sizes="152x152"
+  rel="apple-touch-icon">
+<!-- iOS 7 iPad -->
+<link href="/static/images/apple-touch-icon-76x76.png" sizes="76x76"
+  rel="apple-touch-icon">
+
+<!-- TODO: desc + webmaster tools -->
+
+<meta property="og:url" content="http://www.flappybirdweb.net">
+<meta property="fb:app_id" content="590463051037700">
+
+<style>
+  body {
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    margin: 0 auto;
+    text-rendering: optimizeLegibility;
+    /* Prevent text size adjustment on orientation change */
+    -webkit-text-size-adjust: 100%;
+    width: 640px;
+  }
+  .fb-like {
+    vertical-align: top;
+  }
+  #flappy-bird {
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -o-crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
+    -ms-interpolation-mode: nearest-neighbor;
+    overflow: hidden;
+  }
+  h1 {
+    font-weight: normal;
+    text-align: center;
+    margin-bottom: 0.37em;
+  }
+  #share-buttons {
+    text-align: center;
+    margin-top: 0;
+  }
+</style>
+
+<body>
+
+<div id="fb-root"></div>
+<script>
+  (function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];
+  if(d.getElementById(id))return;js=d.createElement(s);js.id=id;
+  js.src="//connect.facebook.net/en_US/all.js#xfbml=1&appId=590463051037700";
+  fjs.parentNode.insertBefore(js,fjs);}(document,'script','facebook-jssdk'));
+</script>
+
+<h1><strong>Flappy Bird</strong> Web</h1>
+
+<p id="share-buttons">
+  <span class="fb-like" data-href="http://www.flappybirdweb.net"
+    data-layout="button" data-action="like" data-show-faces="false"
+    data-share="true"></span>
+  <a href="https://twitter.com/share" class="twitter-share-button"
+    data-url="http://www.flappybirdweb.net" data-text="Flappy Bird Web"
+    data-count="none" data-hashtags="flappybird" data-dnt="true">Tweet</a>
+  <script>
+    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],
+    p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){
+    js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';
+    fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+  </script>
+</p>
+
+<div id="flappy-bird"></div>
+
+<script src="/static/scripts/game.js"></script>
+
+% if not IS_DEV:
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-48242310-1', 'flappybirdweb.net');
+    ga('send', 'pageview');
+  </script>
+% end
