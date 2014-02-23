@@ -24,13 +24,22 @@
 <meta property="fb:app_id" content="590463051037700">
 
 <style>
+  @media screen and (max-width: 480px) {
+    body > :not(#flappy-bird) {
+      display: none;
+    }
+  }
+  @media screen and (min-width: 480px) {
+    body {
+      margin: 0 auto;
+      width: 640px;
+    }
+  }
   body {
     font-family: "Helvetica Neue", Helvetica, sans-serif;
-    margin: 0 auto;
     text-rendering: optimizeLegibility;
     /* Prevent text size adjustment on orientation change */
     -webkit-text-size-adjust: 100%;
-    width: 640px;
   }
   .fb-like {
     vertical-align: top;
