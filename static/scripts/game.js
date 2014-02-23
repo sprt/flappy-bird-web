@@ -1136,7 +1136,6 @@ nomen: true, plusplus: true, eqeq: true, sub: true */
   var width, height, game;
   
   if (window.innerWidth < 480) {
-    document.body.style.margin = "0";
     width = window.innerWidth;
     height = window.innerHeight;
   } else {
