@@ -7,4 +7,4 @@ compile_js:
 	--warning_level VERBOSE --js static/scripts/game.js \
 	--js_output_file static/scripts/game.min.js
 	git add static/scripts/game.min.js
-	git commit -m "Compile JS"
+	-git commit -m "Compile JS"
