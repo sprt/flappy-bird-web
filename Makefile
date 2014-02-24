@@ -1,4 +1,4 @@
-.PHONY: compile_js
+.PHONY: compile_js deploy
 
 compile_js:
 	java -jar scripts/compiler.jar \
@@ -8,3 +8,6 @@ compile_js:
 	--js_output_file static/scripts/game.min.js
 	git add static/scripts/game.min.js
 	-git commit -m "Compile JS"
+
+deploy: compile_js
+	../google_appengine/appcfg.py update --oauth2 .
