@@ -241,7 +241,7 @@ nomen: true, plusplus: true, eqeq: true, sub: true */
     // constants
     this.DEFAULT_VOLUME = 0.1;
     this.G = 1200;
-    this.FLAP_FORCE = 350;
+    this.FLAP_FORCE = 365;
     this.SCROLLING_SPEED = 135;
     
     this.LAND_WIDTH = 336;
