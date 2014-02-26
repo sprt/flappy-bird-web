@@ -226,7 +226,7 @@ nomen: true, plusplus: true, eqeq: true, sub: true */
     this.landScrollingSpeed = null;
     
     this.sprite = {};
-    this.iosSounds = {};
+    this.sounds = {};
     
     this.birdie = null;
     this.playButton = null;
@@ -263,9 +263,6 @@ nomen: true, plusplus: true, eqeq: true, sub: true */
    * @param {number} height
    */
   FlappyBird.prototype.initialize = function (width, height) {
-    this.IS_IOS = !!navigator.userAgent.match(/iPhone OS/);
-    this.IS_CHROME = !!navigator.userAgent.match(/Chrome/);
-    this.SOUND_DISABLED = this.IS_IOS || this.IS_CHROME;
     this.setCanvasSize(width, height);
     this.loadAssets(this.onAssetsLoaded.bind(this));
   };
@@ -294,15 +291,6 @@ nomen: true, plusplus: true, eqeq: true, sub: true */
     this.assetManager = new AssetManager();
     this.assetManager.queueDownload("/static/images/sprite.png", "image");
     this.assetManager.queueDownload("/static/scripts/sprite.json", "json");
-    
-    if (!this.SOUND_DISABLED) {
-      var that = this;
-      ["die", "hit", "point", "swooshing", "wing"].forEach(function (soundName) {
-        that.assetManager.queueDownload(
-          "/static/sounds/" + that.getSoundFilename(soundName), "audio");
-      });
-    }
-    
     this.assetManager.downloadAll(callback);
   };
   
@@ -565,26 +553,17 @@ nomen: true, plusplus: true, eqeq: true, sub: true */
     return "sfx_" + soundName + extension;
   };
   
-  FlappyBird.prototype.getSound = function (soundName) {
-    var filename = "/static/sounds/" + this.getSoundFilename(soundName);
-    if (this.IS_IOS) {
-      if (this.iosSounds.hasOwnProperty(soundName)) {
-        this.iosSounds[soundName] = document.createElement("audio");
-        this.iosSounds[soundName].src = filename;
-      }
-      return this.iosSounds[soundName];
-    }
-    return this.assetManager.getAsset(filename);
-  };
-  
   FlappyBird.prototype.playSound = function (soundName) {
-    if (this.SOUND_DISABLED) {
+    if (navigator.userAgent.match(/iPhone OS/)) {
       // Disable sound on iOS for now because it causes a *massive* fps drop
       return;
     }
-    var sound = this.getSound(soundName).cloneNode();
+    var sound = document.createElement("audio");
     sound.volume = this.DEFAULT_VOLUME;
-    sound.play();
+    sound.addEventListener("loadeddata", function () {
+      sound.play();
+    }, false);
+    sound.src = "/static/sounds/" + this.getSoundFilename(soundName);
   };
   
   FlappyBird.prototype.changeBackground = function () {
