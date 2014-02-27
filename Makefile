@@ -10,5 +10,5 @@ compile_js:
 	-git commit -m "Compile JS"
 
 deploy: compile_js
-	../google_appengine/appcfg.py update --oauth2 .
+	../google_appengine/appcfg.py --oauth2 update .
 	../google_appengine/appcfg.py --oauth2 set_default_version .
