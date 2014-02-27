@@ -634,7 +634,13 @@ nomen: true, plusplus: true, eqeq: true, sub: true */
       return null;
     }
     
-    if (e instanceof window["MouseEvent"] || e instanceof window["TouchEvent"]) {
+    if (["mousedown", "mouseup"].indexOf(e.type) != -1) {
+      type = "mousetouch";
+    } else {
+      type = "keyboard";
+    }
+    
+    if (type == "mousetouch") {
       type = "mousetouch";
       if (e.type == "touchend") {
         data.coords = {
@@ -647,7 +653,7 @@ nomen: true, plusplus: true, eqeq: true, sub: true */
           y: e.layerY
         };
       }
-    } else if (e instanceof window["KeyboardEvent"]) {
+    } else {
       type = "keyboard";
       data.keyCode = e.keyCode;
     }
