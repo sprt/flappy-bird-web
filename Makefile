@@ -11,3 +11,4 @@ compile_js:
 
 deploy: compile_js
 	../google_appengine/appcfg.py update --oauth2 .
+	../google_appengine/appcfg.py --oauth2 set_default_version .
