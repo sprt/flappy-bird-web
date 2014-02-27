@@ -249,7 +249,7 @@ nomen: true, plusplus: true, eqeq: true, sub: true */
     
     this.PIPE_WIDTH = 52;
     this.PIPE_HEIGHT = 320;
-    this.PIPE_GAP = 106;
+    this.PIPE_GAP = 98;
     this.PIPE_DISTANCE = 176;
     
     this.MAX_GAME_HEIGHT =
