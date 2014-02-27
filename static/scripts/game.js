@@ -554,33 +554,16 @@ nomen: true, plusplus: true, eqeq: true, sub: true */
   };
   
   FlappyBird.prototype.playSound = function (soundName) {
-    var filename, sound, clonedSound;
-    
     if (navigator.userAgent.match(/iPhone OS/)) {
       // Disable sound on iOS for now because it causes a *massive* fps drop
       return;
     }
-    
-    if (!this.sounds.hasOwnProperty(soundName)) {
-      filename = this.getSoundFilename(soundName);
-      sound = document.createElement("audio");
-      sound.volume = this.DEFAULT_VOLUME;
-      sound.addEventListener("loadeddata", function () {
-        sound.play();
-      }, false);
-      sound.src = "/static/sounds/" + filename;
-      this.sounds[soundName] = sound;
-    } else {
-      sound = this.sounds[soundName];
-      if (sound.paused) {
-        sound.currentTime = 0;
-        sound.play();
-      } else {
-        clonedSound = sound.cloneNode(false);
-        clonedSound.volume = this.DEFAULT_VOLUME;
-        clonedSound.play();
-      }
-    }
+    var sound = document.createElement("audio");
+    sound.volume = this.DEFAULT_VOLUME;
+    sound.addEventListener("loadeddata", function () {
+      sound.play();
+    }, false);
+    sound.src = "/static/sounds/" + this.getSoundFilename(soundName);
   };
   
   FlappyBird.prototype.changeBackground = function () {
