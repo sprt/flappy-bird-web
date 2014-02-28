@@ -595,7 +595,10 @@ nomen: true, plusplus: true, eqeq: true, sub: true */
           (1 - this.LAND_HEIGHT / this.sprite.data[bgName].height) -
           this.LAND_HEIGHT;
     
-    this.$canvas.style.backgroundImage = "url(/static/images/sprite.png)";
+    if (!this.$canvas.style.backgroundImage) {
+      this.$canvas.style.backgroundImage = "url(/static/images/sprite.png)";
+    }
+    
     this.$canvas.style.backgroundRepeat = "no-repeat";
     this.$canvas.style.backgroundColor = bgColor;
     this.$canvas.style.backgroundPosition =
