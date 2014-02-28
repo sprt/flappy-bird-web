@@ -472,7 +472,7 @@ nomen: true, plusplus: true, eqeq: true, sub: true */
           vy: 0,
           version: uniformRandom(0, 2),
           frame: 0,
-          frameTime: 150,
+          frameTime: 130,
           lastFrameTime: null,
           direction: 0,
           lastDirectionChangeTime: null,
@@ -504,7 +504,7 @@ nomen: true, plusplus: true, eqeq: true, sub: true */
         this.birdie.y =
           this.$canvas.height / 2 - this.sprite.data["bird0_0"].height / 2;
         this.birdie.frame = 0;
-        this.birdie.frameTime = 150;
+        this.birdie.frameTime = 130;
         this.birdie.lastFrameTime = null;
         this.birdie.direction = 0;
         this.birdie.lastDirectionChangeTime = null;
@@ -531,7 +531,7 @@ nomen: true, plusplus: true, eqeq: true, sub: true */
         this.g = this.G;
         this.pipeScrollingSpeed = this.SCROLLING_SPEED;
         this.landScrollingSpeed = this.SCROLLING_SPEED;
-        this.birdie.frameTime = 75;
+        this.birdie.frameTime = 65;
         break;
       case this.State.GAMEOVER:
         this.pipeScrollingSpeed = 0;
