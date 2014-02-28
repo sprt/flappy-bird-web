@@ -403,14 +403,24 @@ nomen: true, plusplus: true, eqeq: true, sub: true */
         that.drawTile("text_game_over",
                        that.$canvas.width / 2 -
                        that.sprite.data["text_game_over"].width / 2,
-                       150);
+                       that.$canvas.height - that.sprite.data["button_play"].height -
+                       that.LAND_HEIGHT + 10 -
+                       that.sprite.data["score_panel"].height - 15 -
+                       that.sprite.data["text_game_over"].height - 5);
         that.ctx.globalAlpha = 1;
+      },
+      onAnimationStart: function () {
+        that.displayScore = false;
       }
     });
     
     this.animations[this.State.GAMEOVER].scorePanel = new Animation({
       from: {y: this.$canvas.height},
-      to: {y: 210},
+      to: {
+        y:
+          this.$canvas.height - this.sprite.data["button_play"].height -
+          this.LAND_HEIGHT + 10 - this.sprite.data["score_panel"].height - 15
+      },
       duration: 200,
       delay: 1000,
       /**
@@ -504,6 +514,7 @@ nomen: true, plusplus: true, eqeq: true, sub: true */
         
         this.landScrollingSpeed = this.SCROLLING_SPEED;
         
+        this.displayScore = true;
         this.score = 0;
         this.newHighScore = false;
         this.medalId = null;
@@ -547,7 +558,9 @@ nomen: true, plusplus: true, eqeq: true, sub: true */
         this.landScrollingSpeed = 0;
         this.playButton.x =
           this.$canvas.width / 2 - this.sprite.data["button_play"].width / 2;
-        this.playButton.y = 350;
+        this.playButton.y =
+          this.$canvas.height - this.sprite.data["button_play"].height -
+          this.LAND_HEIGHT + 10;
         break;
       // default: // this.State.LOADING
         // ...
@@ -1093,11 +1106,13 @@ nomen: true, plusplus: true, eqeq: true, sub: true */
     if (this.state >= this.State.START) {
       this.drawPipes();
       
-      // score
-      this.drawNumber(
-        this.$canvas.width / 2,
-        this.$canvas.height / 5 - this.sprite.data["font_048"].width,
-        this.score, "large", "center");
+      if (this.displayScore) {
+        // score
+        this.drawNumber(
+          this.$canvas.width / 2,
+          this.$canvas.height / 5 - this.sprite.data["font_048"].width,
+          this.score, "large", "center");
+      }
     }
     
     // bird
