@@ -551,7 +551,7 @@ nomen: true, plusplus: true, eqeq: true, sub: true */
         this.g = this.G;
         this.pipeScrollingSpeed = this.SCROLLING_SPEED;
         this.landScrollingSpeed = this.SCROLLING_SPEED;
-        this.birdie.frameTime = 65;
+        this.birdie.frameTime = 60;
         break;
       case this.State.GAMEOVER:
         this.pipeScrollingSpeed = 0;
