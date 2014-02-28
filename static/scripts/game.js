@@ -41,6 +41,7 @@ nomen: true, plusplus: true, eqeq: true, sub: true */
     this._delay = options["delay"] || 0;
     this._sticks = options["sticks"] === undefined ? true : !!options["sticks"];
     this._onAnimationStart = options["onAnimationStart"];
+    this._onAnimationStartFired = false;
     this._onAnimationEnd = options["onAnimationEnd"];
     
     return this;
@@ -63,8 +64,10 @@ nomen: true, plusplus: true, eqeq: true, sub: true */
   
   Animation.prototype.start = function () {
     if (!this._isRunning) {
-      if (this._onAnimationStart) {
+      this._onAnimationStartFired = false;
+      if (this._onAnimationStart && !this._delay) {
         this._onAnimationStart.call(this._values);
+        this._onAnimationStartFired = true;
       }
       Animation._list[this._id] = this;
       this._startTime = (new Date()).getTime();
@@ -97,6 +100,12 @@ nomen: true, plusplus: true, eqeq: true, sub: true */
     
     if (!this._isRunning || this._isWaitingForDelay) {
       return;
+    }
+    
+    if (this._onAnimationStart && !this._isWaitingForDelay &&
+        !this._onAnimationStartFired) {
+      this._onAnimationStart.call(this._values);
+      this._onAnimationStartFired = true;
     }
     
     timePct = timeDiff / this._duration;
