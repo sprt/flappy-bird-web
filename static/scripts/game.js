@@ -556,8 +556,6 @@ nomen: true, plusplus: true, eqeq: true, sub: true */
       case this.State.GAMEOVER:
         this.pipeScrollingSpeed = 0;
         this.landScrollingSpeed = 0;
-        this.playButton.x =
-          this.$canvas.width / 2 - this.sprite.data["button_play"].width / 2;
         this.playButton.y =
           this.$canvas.height - this.sprite.data["button_play"].height -
           this.LAND_HEIGHT + 10;
