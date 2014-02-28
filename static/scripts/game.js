@@ -635,9 +635,9 @@ nomen: true, plusplus: true, eqeq: true, sub: true */
     }
     
     if (["keydown", "keyup"].indexOf(e.type) != -1) {
-      type = "mousetouch";
-    } else {
       type = "keyboard";
+    } else {
+      type = "mousetouch";
     }
     
     if (type == "mousetouch") {
