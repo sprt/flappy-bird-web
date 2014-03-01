@@ -530,7 +530,7 @@ nomen: true, plusplus: true, eqeq: true, sub: true */
         this.birdie.lastDirectionChangeTime = null;
         this.birdie.angle = 0;
         
-        if (prevState != this.State.START) {
+        if (prevState != this.State.HOME) {
           this.birdie.version = uniformRandom(0, 2);
         }
         
