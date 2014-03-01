@@ -14,4 +14,4 @@ def get_warmup():
     pass
 
 app = app()
-run(app=app, debug=IS_DEV, reload=IS_DEV, server='gae')
+run(debug=IS_DEV, reload=IS_DEV, server='gae')
