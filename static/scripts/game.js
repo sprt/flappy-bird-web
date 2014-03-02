@@ -750,65 +750,6 @@ nomen: true, plusplus: true, eqeq: true, sub: true */
       }
       e.preventDefault();
     }
-    
-    // // ----------------------------------------------------------------------
-    
-    // if (ae.data.coords) { // mouse/touch event
-    //   var x = ae.data.coords.x,
-    //       y = ae.data.coords.y;
-    //   if (this.playButton.displayed) {
-    //     if (x >= this.playButton.x &&
-    //         x <= this.playButton.x + this.sprite.data["button_play"].width &&
-    //         y >= this.playButton.y &&
-    //         y <= this.playButton.y + this.sprite.data["button_play"].height) {
-    //       if (ae.type == "start") {
-    //         this.playButton.y += 2;
-    //         e.preventDefault();
-    //       } else {
-    //         this.playButton.y -= 2;
-    //         this.playButton.displayed = false;
-    //         this.playSound("swooshing");
-    //         this.changeState(this.State.START);
-    //         e.preventDefault();
-    //       }
-    //     }
-    //   } else if (ae.type == "start") {
-    //     if ([this.State.START, this.State.PLAYING].indexOf(this.state) != -1 &&
-    //         this.birdie.y >= 0) {
-    //       this.playSound("wing");
-    //       this.flapThisFrame = true;
-    //     }
-    //     if (this.state == this.State.START) {
-    //       this.changeState(this.State.PLAYING);
-    //     }
-    //     e.preventDefault();
-    //   }
-    // } else { // keyboard event
-    //   // [enter, space, up, "w"]
-    //   if ([13, 32, 38, 87].indexOf(ae.data.keyCode) != -1) {
-    //     if (this.playButton.displayed) {
-    //       if (ae.type == "start") {
-    //         this.playButton.y += 2;
-    //         e.preventDefault();
-    //       } else {
-    //         this.playButton.y -= 2;
-    //         this.playSound("swooshing");
-    //         this.changeState(this.State.START);
-    //         e.preventDefault();
-    //       }
-    //     } else if (ae.type == "start") {
-    //       if ([this.State.START, this.State.PLAYING].indexOf(this.state) != -1 &&
-    //           this.birdie.y >= 0) {
-    //         this.playSound("wing");
-    //         this.flapThisFrame = true;
-    //       }
-    //       if (this.state == this.State.START) {
-    //         this.changeState(this.State.PLAYING);
-    //       }
-    //       e.preventDefault();
-    //     }
-    //   }
-    // }
   };
   
   FlappyBird.prototype.updateBirdieAngle = function () {
