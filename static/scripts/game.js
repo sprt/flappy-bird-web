@@ -682,7 +682,7 @@ nomen: true, plusplus: true, eqeq: true, sub: true */
     
     if (type == "mousetouch") {
       type = "mousetouch";
-      if (e.type == "touchend") {
+      if (["touchend", "touchstart"].indexOf(e.type) != -1) {
         data.coords = {
           x: e.changedTouches[0].pageX - this.$canvas.offsetLeft,
           y: e.changedTouches[0].pageY - this.$canvas.offsetTop
