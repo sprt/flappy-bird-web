@@ -98,7 +98,7 @@
 
 <div id="flappy-bird"></div>
 
-<script src="/static/scripts/game{{ '.js' if IS_DEV else '.min.js' }}"></script>
+<script src="/static/scripts/game{{ js_suffix }}"></script>
 
 % if not IS_DEV:
 <script>
