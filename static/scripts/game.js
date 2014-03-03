@@ -684,8 +684,8 @@ nomen: true, plusplus: true, eqeq: true, sub: true */
       type = "mousetouch";
       if (e.type == "touchend") {
         data.coords = {
-          x: e.changedTouches[0].clientX,
-          y: e.changedTouches[0].clientY
+          x: e.changedTouches[0].pageX - this.$canvas.offsetLeft,
+          y: e.changedTouches[0].pageY - this.$canvas.offsetTop
         };
       } else {
         data.coords = {
