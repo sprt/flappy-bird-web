@@ -245,8 +245,6 @@ nomen: true, plusplus: true, eqeq: true, sub: true */
     this.landTilesX = null;
     this.landTilesRequired = null;
     
-    this.flapThisFrame = false;
-    
     // constants
     this.DEFAULT_VOLUME = 0.1;
     this.G = 1200;
@@ -743,7 +741,8 @@ nomen: true, plusplus: true, eqeq: true, sub: true */
       if ([this.State.START, this.State.PLAYING].indexOf(this.state) != -1 &&
           this.birdie.y >= 0) {
         this.playSound("wing");
-        this.flapThisFrame = true;
+        this.birdie.vy = this.FLAP_FORCE;
+        this.birdie.direction = 1;
       }
       if (this.state == this.State.START) {
         this.changeState(this.State.PLAYING);
@@ -753,10 +752,6 @@ nomen: true, plusplus: true, eqeq: true, sub: true */
   };
   
   FlappyBird.prototype.updateBirdieAngle = function () {
-    if (this.birdie.lastDirectionChangeTime === null) {
-      return;
-    }
-    
     if (this.birdie.direction >= 0) {
       this.birdie.angle -= this.birdie.vy * 2 * this.dt;
       this.birdie.angle = Math.max(-20, this.birdie.angle);
@@ -780,13 +775,8 @@ nomen: true, plusplus: true, eqeq: true, sub: true */
     var prevDirection = this.birdie.direction;
     
     if (this.state > this.State.START) {
-      if (this.flapThisFrame) {
-        this.birdie.vy = this.FLAP_FORCE;
-        this.birdie.direction = 1;
-      } else {
-        this.birdie.vy -= this.g * this.dt;
-        this.birdie.direction = sign(this.birdie.vy);
-      }
+      this.birdie.vy -= this.g * this.dt;
+      this.birdie.direction = sign(this.birdie.vy);
       
       if (this.birdie.direction != prevDirection) {
         this.birdie.lastDirectionChangeTime = this.t;
@@ -874,7 +864,6 @@ nomen: true, plusplus: true, eqeq: true, sub: true */
     this.checkBirdieCollision();
     this.draw();
     
-    this.flapThisFrame = false;
     this.lastFrameTime = this.t;
     
     window.requestAnimationFrame(this.update.bind(this));
