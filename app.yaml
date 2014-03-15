@@ -1,5 +1,5 @@
 application: flappy-bird-web
-version: 11
+version: 12
 runtime: python27
 api_version: 1
 threadsafe: true
