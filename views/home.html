@@ -2,17 +2,11 @@
 <meta charset="utf-8">
 
 <title>Flappy Bird Web</title>
-<meta name="description" content="The popular game is now available for you to play on your computer, tablet, or smartphone.">
 
 <meta name="viewport"
   content="width=device-width, initial-scale=1.0, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-<meta property="og:title" content="Flappy Bird Web">
-<meta property="og:url" content="http://www.flappybirdweb.net/">
-<meta property="og:description" content="The popular game is now available for you to play on your computer, tablet, or smartphone.">
-<meta property="og:image" content="http://www.flappybirdweb.net/static/images/og_image.png">
 
 <!-- iOS 7 iPhone (retina) -->
 <link href="/static/images/apple-touch-icon-120x120.png" sizes="120x120"
@@ -45,9 +39,6 @@
     /* Prevent text size adjustment on orientation change */
     -webkit-text-size-adjust: 100%;
   }
-  .fb-like {
-    vertical-align: top;
-  }
   #flappy-bird {
     image-rendering: -moz-crisp-edges;
     image-rendering: -o-crisp-edges;
@@ -60,53 +51,10 @@
     text-align: center;
     margin-bottom: 0.37em;
   }
-  #share-buttons {
-    text-align: center;
-    margin-top: 0;
-  }
 </style>
 
 <body>
 
-<div id="fb-root"></div>
-<script>
-  (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=264661040362681";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-</script>
-
 <h1><b>Flappy Bird</b> Web</h1>
-
-<p id="share-buttons">
-  <span class="fb-like" data-href="http://www.facebook.com/PlayFlappyBirdWeb"
-    data-layout="button" data-action="like" data-show-faces="false"
-    data-share="true"></span>
-  <a href="https://twitter.com/share" class="twitter-share-button"
-    data-url="http://www.flappybirdweb.net" data-text="Flappy Bird Web"
-    data-count="none" data-hashtags="flappybird" data-dnt="true">Tweet</a>
-  <script>
-    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],
-    p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){
-    js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';
-    fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
-  </script>
-</p>
-
 <div id="flappy-bird"></div>
-
 <script src="/static/scripts/game{{ js_suffix }}"></script>
-
-% if not IS_DEV:
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-48242310-1', 'flappybirdweb.net');
-  ga('send', 'pageview');
-</script>
-% end
