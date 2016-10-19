@@ -22,6 +22,7 @@ nomen: true, plusplus: true, eqeq: true, sub: true */
   
   /**
    * @constructor
+   * @param {Object} options
    */
   var Animation = function (options) {
     this._id = Animation._idCounter++;
@@ -1085,8 +1086,6 @@ nomen: true, plusplus: true, eqeq: true, sub: true */
     this.pipePairs.map(this.getPipeData.bind(this)).forEach(function(pipeData) {
       that.drawTile("pipe_down", pipeData.down.x, pipeData.down.y);
       that.drawTile("pipe_up", pipeData.up.x, pipeData.up.y);
-      // // debug
-      // that.ctx.fillRect(pipe.x-2.5, pipe.my-2.5, 5, 5);
     });
   };
   
